@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>学生</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./bootstrap/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/student.css" />
+  </head>
+  <body class="application application-offset">
+    <div class="container-fluid container-application">
+      <div class="sidenav show" id="sidenav-main">
+        <!-- Sidenav header -->
+        <div class="sidenav-header d-flex align-items-center">
+          <a class="navbar-brand" href="./index.html">
+            <span class="logo">·ITCAST·</span>
+          </a>
+        </div>
+        <!-- User mini profile -->
+        <div class="sidenav-user d-flex flex-column align-items-center justify-content-between text-center">
+          <!-- Avatar -->
+          <div>
+            <a href="#" class="avatar rounded-circle avatar-xl">
+              <img alt="Image placeholder" src="https://yanxuan-item.nosdn.127.net/8b27deb1670c53e67c42ca3e1ed6fd12.jpg" class="" />
+            </a>
+            <div class="mt-5">
+              <h5 class="mb-0 text-white">黑马前端</h5>
+              <span class="d-block text-sm text-white opacity-8 mb-3">数据可视化</span>
+              <a href="javascript:;" class="btn btn-sm btn-white btn-icon rounded-pill shadow hover-translate-y-n3">
+                <span class="btn-inner--text">学前端来黑马</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Application nav -->
+        <div class="nav-application clearfix">
+          <a href="./index.html" class="btn btn-square text-sm">
+            <span class="btn-inner--icon d-block"><i class="bi bi-house bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">首页</span>
+          </a>
+          <a href="./student.html" class="btn btn-square text-sm active">
+            <span class="btn-inner--icon d-block"><i class="bi bi-people bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">学生</span>
+          </a>
+          <a href="javascript:;" class="btn btn-square text-sm">
+            <span class="btn-inner--icon d-block"><i class="bi bi-columns bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">排版</span>
+          </a>
+          <a href="javascript:;" class="btn btn-square text-sm">
+            <span class="btn-inner--icon d-block"><i class="bi bi-files bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">资料</span>
+          </a>
+          <a href="javascript:;" class="btn btn-square text-sm">
+            <span class="btn-inner--icon d-block"><i class="bi bi-receipt bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">就业</span>
+          </a>
+          <a href="javascript:;" class="btn btn-square text-sm">
+            <span class="btn-inner--icon d-block"><i class="bi bi-gear bi-2x"></i></span>
+            <span class="btn-inner--icon d-block pt-2">设置</span>
+          </a>
+        </div>
+        <!-- Misc area -->
+        <div class="card bg-gradient-warning">
+          <div class="card-body">
+            <h5 class="text-white">哈喽, 朋友!</h5>
+            <p class="text-white mb-4">为什么不现在开始学习前端，创造一些令人惊叹的东西呢？</p>
+            <a href="http://itcast.cn" class="btn btn-sm btn-block btn-white rounded-pill" target="_blank">Get started</a>
+          </div>
+        </div>
+      </div>
+      <div class="main-content position-relative">
+        <nav class="navbar navbar-main navbar-expand-lg navbar-dark navbar-border" id="navbar-main">
+          <div class="container-fluid">
+            <!-- Navbar nav -->
+            <div class="collapse navbar-collapse navbar-collapse-fade" id="navbar-main-collapse">
+              <ul class="navbar-nav align-items-lg-center">
+                <!-- Home  -->
+                <li class="nav-item">
+                  <a class="nav-link pl-lg-0" href="./index.html"> 首页 </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-lg-0" href="./index.html"> 传智教育 </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-lg-0" href="./index.html"> 黑马程序员 </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-lg-0" href="./index.html"> 文档 </a>
+                </li>
+              </ul>
+              <!-- Right menu -->
+              <ul class="navbar-nav ml-lg-auto align-items-center d-none d-lg-flex">
+                <li class="nav-item dropdown dropdown-animate">
+                  <a class="nav-link pr-lg-0" href=".dropdown-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media media-pill align-items-center">
+                      <span class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="https://yanxuan-item.nosdn.127.net/8b27deb1670c53e67c42ca3e1ed6fd12.jpg" />
+                      </span>
+                      <div class="ml-2 d-none d-lg-block">
+                        <span class="mb-0 text-sm font-weight-bold">Admin</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-lg-0" id="logout" href="javascript:;"> 退出 </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="page-content">
+          <div class="page-title mb-3">
+            <div class="row justify-content-between align-items-center">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <h5 class="h3 font-weight-400 mb-0 text-white">Students</h5>
+                <span class="text-sm text-white opacity-8">一共有 <b class="total">0</b> 位学员</span>
+              </div>
+              <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
+                <a id="openModal" href="javascript:;" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-4">
+                  <span class="btn-inner--icon"><i class="bi bi-plus bi-2x"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card card-fluid">
+                <div class="table-responsive" style="min-height: 1000px">
+                  <table class="table align-items-center">
+                    <thead>
+                      <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>组号</th>
+                        <th>期望薪资</th>
+                        <th>就业薪资</th>
+                        <th>籍贯</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody class="list">
+                      <!-- <tr>
+                      <td>张杰</td>
+                      <td>20</td>
+                      <td>男</td>
+                      <td>第2组</td>
+                      <td>10000</td>
+                      <td>13000</td>
+                      <td>北京北京市东城区</td>
+                      <td>
+                        <a href="javascript:;" class="text-success mr-3"><i class="bi bi-pen"></i></a>
+                        <a href="javascript:;" class="text-danger"><i class="bi bi-trash"></i></a>
+                      </td>
+                    </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="footer pt-5 pb-4 footer-light" id="footer-main">
+            <div class="row text-center text-sm-left align-items-sm-center">
+              <div class="col-sm-6">
+                <p class="text-sm mb-0">© 2022 <a href="https://itcast.cn" class="h6 text-sm" target="_blank">前端学科</a>. All rights reserved.</p>
+              </div>
+              <div class="col-sm-6 mb-md-0">
+                <ul class="nav justify-content-center justify-content-md-end">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Support</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Terms</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link pr-0" href="#">Privacy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add Modal -->
+    <div class="modal fade" id="modal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">添加学员</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form" class="g-3 row" autocomplete="off" novalidate>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">姓名：</label>
+                  <input type="text" name="name" class="form-control" placeholder="请输入姓名" />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">性别：</label>
+                  <div class="input">
+                    <div class="form-check d-inline-block">
+                      <input value="0" checked id="cb01" class="form-check-input" type="radio" name="gender" />
+                      <label for="cb01" class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check d-inline-block">
+                      <input value="1" id="cb02" class="form-check-input" type="radio" name="gender" />
+                      <label for="cb02" class="form-check-label">女</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">年龄：</label>
+                  <input type="text" name="age" class="form-control" placeholder="请输入年龄" />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">组号：</label>
+                  <input type="text" name="group" class="form-control" placeholder="请输入1-8组号" />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">期望薪资：</label>
+                  <input type="text" name="hope_salary" class="form-control" placeholder="请输入期望薪资" />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="input-group-label">就业薪资：</label>
+                  <input type="text" name="salary" class="form-control" placeholder="请输入就业薪资" />
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="input-group-label">籍贯：</label>
+                  <div class="input pl-0">
+                    <select class="form-select custom-select" name="province">
+                      <option value="">--省份--</option>
+                    </select>
+                    <select class="form-select custom-select" name="city">
+                      <option value="">--城市--</option>
+                    </select>
+                    <select class="form-select custom-select" name="area">
+                      <option value="">--地区--</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-blue" id="submit">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./bootstrap/bootstrap.min.js"></script>
+    <script src="./lib/axios.js"></script>
+    <script src="./lib/form-serialize.js"></script>
+    <script src="./js/common.js"></script>
+    <script>
+      
+    </script>
+  </body>
+</html>
