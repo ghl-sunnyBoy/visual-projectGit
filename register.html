@@ -140,9 +140,9 @@
         tiy('登录成功')
         const fm1 = new serialize(form, { hash: true })
         console.log(fm1);
-        // setTimeout(function () {
-        //   location.href = './login.html'
-        // }, 1000)
+        setTimeout(function () {
+          location.href = './login.html'
+        }, 1000)
       } catch (err) {
         tiy(err.response.data.message)
       }
