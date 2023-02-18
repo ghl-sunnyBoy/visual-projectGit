@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // 每个页面都会导入该js 统一的设置写这里即可
+// 基地址
+axios.defaults.baseURL = 'http://ajax-api.itheima.net'
 
 // 弹框
 function tiy(str) {
@@ -31,3 +33,15 @@ axios.interceptors.response.use(function (response) {
 // 用户名渲染
 const nameSpan = document.querySelector('#navbar-main .font-weight-bold')
 nameSpan.innerHTML = localStorage.getItem('username')
+
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+  const studentToken = localStorage.getItem('token')
+  // 在发送请求之前做些什么
+  // console.log(config);
+  config.headers.Authorization = studentToken
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});

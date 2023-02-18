@@ -286,6 +286,15 @@
   <script src="./js/common.js"></script>
   <script>
 
+  
+    async function fn() {
+      const res = await axios({
+        url: '/students'
+      })
+      // console.log(res);
+      
+    }
+    fn()
   </script>
 </body>
 
