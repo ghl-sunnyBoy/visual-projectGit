@@ -27,3 +27,7 @@ axios.interceptors.response.use(function (response) {
   // 对响应错误做点什么
   return Promise.reject(error);
 });
+
+// 用户名渲染
+const nameSpan = document.querySelector('#navbar-main .font-weight-bold')
+nameSpan.innerHTML = localStorage.getItem('username')
