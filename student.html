@@ -286,13 +286,31 @@
   <script src="./js/common.js"></script>
   <script>
 
-  
+
     async function fn() {
       const res = await axios({
         url: '/students'
       })
       // console.log(res);
-      
+      const tbody = document.querySelector('.table-responsive .list')
+      res.data.forEach(x => {
+        const tr = document.createElement('tr')
+        x.gender = x.gender == 1 ? '女' : '男'
+        tr.innerHTML = `
+            <td>${x.name}</td>
+            <td>${x.age}</td>
+            <td>${x.gender}</td>
+            <td>第${x.group}组</td>
+            <td>${x.hope_salary}</td>
+            <td>${x.salary}</td>
+            <td>${x.province + x.city + x.area}</td>
+            <td>
+              <a href="javascript:;" class="text-success mr-3"><i class="bi bi-pen"></i></a>
+              <a href="javascript:;" class="text-danger"><i class="bi bi-trash"></i></a>
+            </td>
+            `
+        tbody.appendChild(tr)
+      })
     }
     fn()
   </script>
