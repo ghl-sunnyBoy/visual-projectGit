@@ -286,13 +286,17 @@
   <script src="./js/common.js"></script>
   <script>
 
-
-    async function fn() {
+    const numP = document.querySelector('.mb-md-0 .total')
+    const tbody = document.querySelector('.table-responsive .list')
+    // 渲染学生列表
+    async function applyStudent() {
       const res = await axios({
         url: '/students'
       })
       // console.log(res);
-      const tbody = document.querySelector('.table-responsive .list')
+      // 一共多少个学生
+      numP.innerHTML = res.data.length
+      tbody.innerHTML = ''
       res.data.forEach(x => {
         const tr = document.createElement('tr')
         x.gender = x.gender == 1 ? '女' : '男'
@@ -306,13 +310,25 @@
             <td>${x.province + x.city + x.area}</td>
             <td>
               <a href="javascript:;" class="text-success mr-3"><i class="bi bi-pen"></i></a>
-              <a href="javascript:;" class="text-danger"><i class="bi bi-trash"></i></a>
+              <a href="javascript:;" class="text-danger" data-id="${x.id}"><i class="bi bi-trash"></i></a>
             </td>
             `
         tbody.appendChild(tr)
       })
     }
-    fn()
+    applyStudent()
+
+    tbody.addEventListener('click', async function (e) {
+      if (e.target.classList.contains('bi-trash')) {
+        // console.log(e.target.parentNode.dataset.id);
+        const resDlt = await axios({
+          url: `/students/${e.target.parentNode.dataset.id}`,
+          method: 'delete'
+        })
+        // console.log(resDlt);
+        applyStudent()
+      }
+    })
   </script>
 </body>
 
