@@ -101,16 +101,6 @@
     const inputPassword = document.querySelector('#input-password')
     const form = document.querySelector('form')
 
-
-
-    function tiy(str) {
-      myToast.children[0].innerHTML = str
-      const fm = new bootstrap.Toast(myToast, {
-        delay: 1000
-      })
-      fm.show()
-    }
-
     btnRegister.addEventListener('click', async function () {
       if (inputEmail.value === '') {
         tiy('用户名不能为空')
