@@ -45,3 +45,11 @@ axios.interceptors.request.use(function (config) {
   // 对请求错误做些什么
   return Promise.reject(error);
 });
+
+// 退出按钮
+const logout = document.querySelector('#logout')
+logout.addEventListener('click', function () {
+  localStorage.removeItem('username')
+  localStorage.removeItem('token')
+  location.href = './login.html'
+})

@@ -310,7 +310,7 @@
             <td>${x.salary}</td>
             <td>${x.province + x.city + x.area}</td>
             <td>
-              <a href="javascript:;" class="text-success mr-3"><i class="bi bi-pen"></i></a>
+              <a href="javascript:;" class="text-success mr-3" data-id="${x.id}"><i class="bi bi-pen"></i></a>
               <a href="javascript:;" class="text-danger" data-id="${x.id}"><i class="bi bi-trash"></i></a>
             </td>
             `
@@ -396,6 +396,7 @@
     })
 
     const submit = document.querySelector('#submit')
+
     submit.addEventListener('click', async function () {
       const fm = serialize(form, { hash: true })
       // console.log(fm);
@@ -415,15 +416,82 @@
             group: parseInt(fm.group)
           }
         })
+        // console.log(fm);
         myModal.hide()
         applyStudent()
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         alert('请填写正确信息')
       }
-
     })
 
+    // 修改
+    tbody.addEventListener('click', async function (e) {
+      if (e.target.classList.contains('bi-pen')) {
+        const studentPs = await axios({
+          url: `/students/${e.target.parentNode.dataset.id}`
+        })
+        const studentObj = studentPs.data
+        // console.log(studentObj);
+        localStorage.setItem('id', studentObj.id)
+        const stuCy = await axios({
+          url: 'http://ajax-api.itheima.net/api/city',
+          params: {
+            pname: studentObj.province
+          }
+        })
+        city.innerHTML = ''
+        stuCy.data.forEach(c => {
+          const opt = document.createElement('option')
+          opt.innerHTML = c
+          city.appendChild(opt)
+        })
+
+        const stuAr = await axios({
+          url: 'http://ajax-api.itheima.net/api/area',
+          params: {
+            pname: studentObj.province,
+            cname: studentObj.city
+          }
+        })
+        // console.log(cy);
+        area.innerHTML = ''
+        stuAr.data.forEach(a => {
+          const opt = document.createElement('option')
+          opt.innerHTML = a
+          area.appendChild(opt)
+        })
+
+        for (const k in studentObj) {
+          // console.log(studentObj[k]);
+          if (document.querySelector(`[name="${k}"]`)) {
+            document.querySelector(`[name="${k}"]`).value = studentObj[k]
+          }
+        }
+        myModal.show()
+      }
+    })
+
+    submit.addEventListener('click', async function () {
+      const setFm = serialize(form, { hash: true })
+      // console.log(setFm);
+      await axios({
+        url: `/students/${localStorage.getItem('id')}`,
+        method: 'put',
+        data: {
+          name: setFm.name,
+          age: parseInt(setFm.age),
+          gender: parseInt(setFm.gender),
+          province: setFm.province,
+          city: setFm.city,
+          area: setFm.area,
+          hope_salary: parseInt(setFm.hope_salary),
+          salary: parseInt(setFm.salary),
+          group: parseInt(setFm.group)
+        }
+      })
+      applyStudent()
+    })
 
 
   </script>
