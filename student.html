@@ -286,6 +286,7 @@
   <script src="./js/common.js"></script>
   <script>
 
+
     const numP = document.querySelector('.mb-md-0 .total')
     const tbody = document.querySelector('.table-responsive .list')
     // 渲染学生列表
@@ -318,6 +319,61 @@
     }
     applyStudent()
 
+    const province = document.querySelector('[name="province"]')
+    const city = document.querySelector('[name="city"]')
+    const area = document.querySelector('[name="area"]')
+    // 获取 省市区
+    async function site() {
+      const pe = await axios({
+        url: 'http://ajax-api.itheima.net/api/province'
+      })
+      // console.log(res1);
+      pe.data.forEach(p => {
+        // console.log(x);
+        const opt = document.createElement('option')
+        opt.innerHTML = p
+        province.appendChild(opt)
+
+      })
+      // console.log(pe.data[0]);
+
+      // 获得城市
+      province.addEventListener('change', async function () {
+        const cy = await axios({
+          url: 'http://ajax-api.itheima.net/api/city',
+          params: {
+            pname: province.value
+          }
+        })
+        // console.log(cy);
+        city.innerHTML = ''
+        cy.data.forEach(c => {
+          const opt = document.createElement('option')
+          opt.innerHTML = c
+          city.appendChild(opt)
+        })
+      })
+
+      // 获得区
+      city.addEventListener('change', async function () {
+        const aa = await axios({
+          url: 'http://ajax-api.itheima.net/api/area',
+          params: {
+            pname: province.value,
+            cname: city.value
+          }
+        })
+        // console.log(cy);
+        area.innerHTML = ''
+        aa.data.forEach(a => {
+          const opt = document.createElement('option')
+          opt.innerHTML = a
+          area.appendChild(opt)
+        })
+      })
+    }
+    site()
+
     tbody.addEventListener('click', async function (e) {
       if (e.target.classList.contains('bi-trash')) {
         // console.log(e.target.parentNode.dataset.id);
@@ -329,6 +385,24 @@
         applyStudent()
       }
     })
+
+    const openModal = document.querySelector('#openModal')
+    const modal = document.querySelector('#modal')
+    const myModal = new bootstrap.Modal(modal)
+    const form = document.querySelector('#form')
+
+    openModal.addEventListener('click', function () {
+      myModal.show()
+    })
+
+    const submit = document.querySelector('#submit')
+    submit.addEventListener('click', function () {
+      const fm = serialize(form, { hash: true })
+      // console.log(fm);
+    })
+
+
+
   </script>
 </body>
 
