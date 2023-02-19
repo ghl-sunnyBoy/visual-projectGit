@@ -396,9 +396,32 @@
     })
 
     const submit = document.querySelector('#submit')
-    submit.addEventListener('click', function () {
+    submit.addEventListener('click', async function () {
       const fm = serialize(form, { hash: true })
       // console.log(fm);
+      try {
+        const dataStu = await axios({
+          url: '/students',
+          method: 'post',
+          data: {
+            name: fm.name,
+            age: parseInt(fm.age),
+            gender: parseInt(fm.gender),
+            province: fm.province,
+            city: fm.city,
+            area: fm.area,
+            hope_salary: parseInt(fm.hope_salary),
+            salary: parseInt(fm.salary),
+            group: parseInt(fm.group)
+          }
+        })
+        myModal.hide()
+        applyStudent()
+      } catch (error) {
+        console.log(error);
+        alert('请填写正确信息')
+      }
+
     })
 
 
