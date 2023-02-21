@@ -300,11 +300,10 @@
       tbody.innerHTML = ''
       res.data.forEach(x => {
         const tr = document.createElement('tr')
-        x.gender = x.gender == 1 ? '女' : '男'
         tr.innerHTML = `
             <td>${x.name}</td>
             <td>${x.age}</td>
-            <td>${x.gender}</td>
+            <td>${x.gender ? '女' : '男'}</td>
             <td>第${x.group}组</td>
             <td>${x.hope_salary}</td>
             <td>${x.salary}</td>
@@ -374,6 +373,7 @@
     }
     site()
 
+    // 删除
     tbody.addEventListener('click', async function (e) {
       if (e.target.classList.contains('bi-trash')) {
         // console.log(e.target.parentNode.dataset.id);
@@ -396,7 +396,7 @@
     })
 
     const submit = document.querySelector('#submit')
-
+    // 新增提交按钮
     submit.addEventListener('click', async function () {
       const fm = serialize(form, { hash: true })
       // console.log(fm);
@@ -468,6 +468,8 @@
             document.querySelector(`[name="${k}"]`).value = studentObj[k]
           }
         }
+        // 性别单选框
+        document.querySelectorAll('[name="gender"]')[studentObj.gender].checked = true
         myModal.show()
       }
     })
